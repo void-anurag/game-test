@@ -33,19 +33,12 @@ function play_a_round(playerSelection, computerSelection){
         return 'You Lose. ${computerSelection} beats ${playerChoice}.';
 }
 
-const playerSelection = prompt("Enter your choice (Rock, Paper, or Scissors):");
-console.log(play_a_round(playerSelection, computerSelection));
-
-function isGameOver(){
-    if (playerScore === 5 || computerScore === 5) {
-        if (playerScore === 5) {
-            return "You Win! Thanks for playing"; 
-        }
-        else {
-            return "You Lose! Thanks for playing"; 
-        }
+function game(round_number = 1){
+    for(round_number; round_number<=5; round_number++){
+        const playerSelection = prompt("Enter your choice:");
+        console.log(play_a_round(playerSelection, computerSelection));
     }
-    return '';
 }
+
 //const computerChoice = getComputerChoice();
 //console.log(computerChoice);
