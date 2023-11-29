@@ -36,5 +36,16 @@ function play_a_round(playerSelection, computerSelection){
 const playerSelection = prompt("Enter your choice (Rock, Paper, or Scissors):");
 console.log(play_a_round(playerSelection, computerSelection));
 
+function isGameOver(){
+    if (playerScore === 5 || computerScore === 5) {
+        if (playerScore === 5) {
+            return "You Win! Thanks for playing"; 
+        }
+        else {
+            return "You Lose! Thanks for playing"; 
+        }
+    }
+    return '';
+}
 //const computerChoice = getComputerChoice();
 //console.log(computerChoice);
