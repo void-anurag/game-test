@@ -1,21 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
-</head>
-<style>
-    input {
-      font-size: 2em;
-      margin: 10px 1px 0;
-    }
-  </style>
-  </head>
-<body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="A Simple Rock-Paper-Scissors web game that you can play against the CPU and test how good you are."
+		/>
+		<title>Rock Paper Scissors</title>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+	</head>
 
-  <input class="numberInput" type="text">
-  <p></p>
-    <script src = "script.js"></script>
-</body>
+	<body>
+		<header><span>Rock-Paper-Scissors</span></header>
+		<main class="content">
+			<div class="score">
+				<h3 class="user">0</h3>
+				<h3 class="divider">:</h3>
+				<h3 class="comp">0</h3>
+			</div>
+			<div class="status written">
+				Make a choice. Don't worry, the computer made its choice already.
+			</div>
+			<div class="options">
+				<button class="indiv-option r">✊🏼</button>
+				<button class="indiv-option p">✋🏼</button>
+				<button class="indiv-option s">✌🏼</button>
+			</div>
+			<div class="game-end written"></div>
+			<div id="reset">Reset</div>
+		</main>
+		<footer>
+			Designed and developed by
+			<a href="https://github.com/berserkwal">berserkwal</a>
+		</footer>
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="app.js"></script>
+	</body>
 </html>
