@@ -1,3 +1,71 @@
+const choices = ["rock", "paper", "scissors"]
+
+function game() {
+    playRound();
+}
+
+function playRound() {
+    const playerSelection = playerChoice();
+    const computerSelection = computerChoice();
+}
+
+function playerChoice() {
+    let input = prompt("Type, Rock, Paper, or Scissors");
+    while(input == null){
+        input = prompt("Type, Rock, Paper, or Scissors");
+    }
+    input = input.toLowerCase();
+    let check = validateInput(input);
+    if(check == true){
+        console.log(input);
+    }
+    console.log(input);
+}
+
+function computerChoice() {
+    const randomIndex = Math.floor(Math.random() * 3);
+    return choices[randomIndex];
+}
+
+function validateInput(choice) {
+    if(choices.includes(choice)){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 function getComputerChoice() {
     const choices = ['rock', 'paper', 'scissors'];
     const randomIndex = Math.floor(Math.random() * 3);
@@ -52,3 +120,4 @@ function game() {
 
 // Start the game
 game();
+*/
