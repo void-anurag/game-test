@@ -1,123 +1,78 @@
-const choices = ["rock", "paper", "scissors"]
+const choices = ["rock", "paper", "scissors"];
+let winners = [];
 
 function game() {
-    playRound();
+  for (let i = 1; i <= 5; i++) {
+    playRound(i);
+  }
+  document.querySelector("button").textContent = "Play new game";
+  logWins();
 }
 
-function playRound() {
-    const playerSelection = playerChoice();
-    const computerSelection = computerChoice();
+function playRound(round) {
+  const playerSelection = playerChoice();
+  const computerSelection = computerChoice();
+  const winner = checkWinner(playerSelection, computerSelection);
+  winners.push(winner);
+  logRound(playerSelection, computerSelection, winner, round);
 }
 
 function playerChoice() {
-    let input = prompt("Type, Rock, Paper, or Scissors");
-    while(input == null){
-        input = prompt("Type, Rock, Paper, or Scissors");
+  let input = prompt("Type Rock, Paper, or Scissors");
+  while (input == null) {
+    input = prompt("Type Rock, Paper, or Scissors");
+  }
+  input = input.toLowerCase();
+  let check = validateInput(input);
+  while (check == false) {
+    input = prompt(
+      "Type Rock, Paper, or Scissors. Spelling needs to be exact, but capitilization doesnt matter"
+    );
+    while (input == null) {
+      input = prompt("Type Rock, Paper, or Scissors");
     }
     input = input.toLowerCase();
-    let check = validateInput(input);
-    if(check == true){
-        console.log(input);
-    }
-    console.log(input);
+    check = validateInput(input);
+  }
+  return input;
 }
 
 function computerChoice() {
-    const randomIndex = Math.floor(Math.random() * 3);
-    return choices[randomIndex];
+  return choices[Math.floor(Math.random() * choices.length)];
 }
 
 function validateInput(choice) {
-    if(choices.includes(choice)){
-        return true;
-    }
-    else {
-        return false;
-    }
+  return choices.includes(choice);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-function getComputerChoice() {
-    const choices = ['rock', 'paper', 'scissors'];
-    const randomIndex = Math.floor(Math.random() * 3);
-    return choices[randomIndex];
+function checkWinner(choiceP, choiceC) {
+  if (choiceP === choiceC) {
+    return "Tie";
+  } else if (
+    (choiceP === "rock" && choiceC == "scissors") ||
+    (choiceP === "paper" && choiceC == "rock") ||
+    (choiceP === "scissors" && choiceC == "paper")
+  ) {
+    return "Player";
+  } else {
+    return "Computer";
+  }
 }
 
-function playRound(playerSelection, computerSelection) {
-    const playerChoice = playerSelection.toLowerCase();
-
-    if (playerChoice === computerSelection) {
-        return "It's a tie! Play again.";
-    }
-
-    if (
-        (playerChoice === 'rock' && computerSelection === 'scissors') ||
-        (playerChoice === 'paper' && computerSelection === 'rock') ||
-        (playerChoice === 'scissors' && computerSelection === 'paper')
-    ) {
-        return `You Win! ${playerChoice} beats ${computerSelection}.`;
-    }
-
-    return `You Lose! ${computerSelection} beats ${playerChoice}.`;
+function logWins() {
+  let playerWins = winners.filter((item) => item == "Player").length;
+  let computerWins = winners.filter((item) => item == "Computer").length;
+  let ties = winners.filter((item) => item == "Tie").length;
+  console.log("Results:");
+  console.log("Player Wins:", playerWins);
+  console.log("Computer Wins:", computerWins);
+  console.log("Ties:", ties);
 }
 
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-
-    for (let round = 1; round <= 5; round++) {
-        const playerSelection = prompt("Enter your choice (Rock, Paper, or Scissors):");
-        const computerSelection = getComputerChoice();
-
-        const result = playRound(playerSelection, computerSelection);
-        console.log(`Round ${round}: ${result}`);
-
-        if (result.includes('Win')) {
-            playerScore++;
-        } else if (result.includes('Lose')) {
-            computerScore++;
-        }
-    }
-
-    // Determine the overall winner
-    if (playerScore > computerScore) {
-        console.log(`Congratulations! You win the game with a score of ${playerScore}-${computerScore}.`);
-    } else if (playerScore < computerScore) {
-        console.log(`Sorry! You lose the game with a score of ${playerScore}-${computerScore}.`);
-    } else {
-        console.log("It's a tie game!");
-    }
+function logRound(playerChoice, computerChoice, winner, round) {
+  console.log("Round:", round);
+  console.log("Player Chose:", playerChoice);
+  console.log("Computer Chose:", computerChoice);
+  console.log(winner, "Won the Round");
+  console.log("-------------------------------");
 }
-
-// Start the game
-game();
-*/
